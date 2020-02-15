@@ -1,41 +1,15 @@
 package com;
 
-public class Direction {
+public abstract class Direction {
   private final char direction;
 
   public Direction(char direction) {
     this.direction = direction;
   }
 
-  public Direction turnRight() {
-    switch (direction) {
-      case 'N':
-        return new Direction('E');
-      case 'S':
-        return new Direction('W');
-      case 'E':
-        return new Direction('N');
-      case 'W':
-        return new Direction('S');
-      default:
-        throw new IllegalArgumentException();
-    }
-  }
+  public abstract Direction turnRight();
 
-  public Direction turnLeft() {
-    switch (direction) {
-      case 'N':
-        return new Direction('W');
-      case 'S':
-        return new Direction('E');
-      case 'E':
-        return new Direction('N');
-      case 'W':
-        return new Direction('S');
-      default:
-        throw new IllegalArgumentException();
-    }
-  }
+  public abstract Direction turnLeft();
 
   @Override
   public boolean equals(Object o) {
@@ -44,9 +18,7 @@ public class Direction {
 
     Direction direction1 = (Direction) o;
 
-    if (direction != direction1.direction) return false;
-
-    return true;
+    return direction == direction1.direction;
   }
 
   @Override
